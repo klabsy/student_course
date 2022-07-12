@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klabsy.dao.UserMapper">
+    <!--增加一个User-->
+    <insert id="addUser" parameterType="User">
+        insert into stu.user(Sno,Sname,Ssex,Sage,Sdept)
+        values (#{Sno},#{Sname}, #{Ssex}, #{Sage},#{Sdept})
+    </insert>
+    <!--根据id删除一个User-->
+    <delete id="deleteUserById" parameterType="int">
+        delete from stu.user where Sno=#{Sno}
+    </delete>
+    <!--更新User-->
+    <update id="updateUser" parameterType="User">
+        update stu.user
+        set Sname = #{Sname},Ssex = #{Ssex},Sage = #{Sage}
+        where Sno = #{Sno}
+    </update>
+    <!--根据id查询,返回一个User-->
+    <select id="queryUserById" resultType="String">
+        select pwd from stu.user
+        where Username = #{Username}
+    </select>
+
+    <select id="queryUserByper" resultType="int">
+        select per from stu.user
+        where Username = #{Username}
+    </select>
+    <!--查询全部User-->
+    <select id="queryAllUser" resultType="User">
+        SELECT * from stu.User
+    </select>
+</mapper>

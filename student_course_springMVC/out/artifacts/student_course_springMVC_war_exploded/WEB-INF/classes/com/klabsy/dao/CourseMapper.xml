@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klabsy.dao.CourseMapper">
+    <!--增加一个Course-->
+    <insert id="addCourse" parameterType="Course">
+        insert into stu.course(Cno,Cname,Cpno,Ccredit)
+        values (#{Cno}, #{Cname}, #{Cpno},#{Ccredit})
+    </insert>
+    <!--根据id删除一个Course-->
+    <delete id="deleteCourseById" parameterType="int">
+        delete from stu.course where Cno=#{Cno}
+    </delete>
+    <!--更新Course-->
+    <update id="updateCourse" parameterType="Course">
+        update stu.Course
+        set Cname = #{Cname},Cpno = #{Cpno},Ccredit = #{Ccredit}
+        where Cno = #{Cno}
+    </update>
+    <!--根据id查询,返回一个Course-->
+    <select id="queryCourseById" resultType="Course">
+        select * from stu.course
+        where Cno = #{Cno}
+    </select>
+    <!--查询全部Course-->
+    <select id="queryAllCourse" resultType="Course">
+        SELECT * from stu.Course
+    </select>
+</mapper>

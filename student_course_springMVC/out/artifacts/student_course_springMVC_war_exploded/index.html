@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户登录</title>
+	<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style type="text/css">
+        body {
+            font-family: 微软雅黑;
+            font-size: 14px;
+        }
+
+        .title {
+            font-size: 18px;
+            line-height: 50px;
+            margin-left: 130px;
+        }
+
+        .one {
+            margin: 10px 0;
+        }
+
+        .one label {
+            width: 100px;
+            float: left;
+            text-align: right;
+            height: 20px;
+            line-height: 20px;
+        }
+
+        .two {
+            padding-left: 120px;
+        }
+    </style>
+
+</head>
+<body>
+<div id="box" >
+    <div class="title">用户登录</div>
+    <form >
+        <div class="one">
+            <label for="type">用户名：</label>
+            <input type="text" v-model="username">
+        </div>
+        <div class="one">
+            <label for="type">密码：</label>
+            <input type="password" v-model="pwd">
+        </div>
+        <div class="two">
+            <input type="button" value="登录" @click="login">
+            <input type="reset" value="重置">
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var vm = new Vue({
+        el: '#box',
+        data: {
+            username: '',
+            pwd: ''
+        },
+        methods: {
+            login: function () {
+				// console.log(this.username)
+                if (this.username == "" || this.pwd == "") {
+                    alert("请输入用户名或密码");
+                } else {
+                    axios({
+                        method: 'post',
+                        url: 'http://localhost:8080/student_course_springMVC_war_exploded/user/login',//请求服务器URL
+                        //传递的数据
+                        data: 'username=' + this.username + '&pwd=' + this.pwd
+                    }).then(function (response) {
+                        if (response.data!==404){//根据服务器返回的响应判断登录结果
+                        	console.log(response.data)
+                            alert("登录成功！");
+                        } else {
+							console.log(response.data);
+                            alert("您输入的用户名或密码不正确！");
+                        }
+                    }).catch(function (error) {
+						console.log(response.data)
+                        alert(error);
+                    });
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

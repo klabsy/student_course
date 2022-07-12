@@ -1,0 +1,63 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<div id="vue">-->
+<!--    <div>Spring MVC和Vue的整合</div>-->
+<!--    <ul v-for="(message, index) in info">-->
+<!--        <li>{{message.sno}}</li>-->
+<!--        <li>{{message.sname}}</li>-->
+<!--        <li>{{message.ssex}}</li>-->
+<!--        <li>{{message.sdept}}</li>-->
+<!--        <li>{{message.sage}}</li>-->
+<!--    </ul>-->
+
+<!--</div>-->
+<!--</body>-->
+
+<!--&lt;!&ndash;1.导入vue.js&ndash;&gt;-->
+<!--<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.min.js"></script>-->
+<!--&lt;!&ndash;导入axios&ndash;&gt;-->
+<!--<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js"></script>-->
+
+<!--<script type="text/javascript">-->
+<!--    var vm = new Vue({-->
+<!--        el: "#vue",-->
+<!--        data() {-->
+<!--            return {-->
+<!--                info: [-->
+<!--                    {-->
+<!--                        Sno: 111,-->
+<!--                        Sname: "",-->
+<!--                        Ssex: "" ,-->
+<!--                        Sdept: "",-->
+<!--                        Sage: null-->
+<!--                    },-->
+<!--                    {-->
+<!--                        Sno: 222,-->
+<!--                        Sname: "",-->
+<!--                        Ssex: "",-->
+<!--                        Sdept: "",-->
+<!--                        Sage: null-->
+<!--                    },-->
+<!--                ]-->
+<!--            }-->
+<!--        },-->
+<!--        beforeCreate() {-->
+<!--            axios.get("http://localhost:8080/student_course_springMVC_war_exploded/student/get_allStudent").then(res => {-->
+<!--                this.info = res.data-->
+<!--                console.log(this.info)-->
+<!--                console.log("test")-->
+<!--            }).catch(err => {-->
+<!--                console.log(err)-->
+<!--            })-->
+<!--        }-->
+<!--    })-->
+<!--</script>-->
+
+<!--</html>-->
